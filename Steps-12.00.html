@@ -1,0 +1,28 @@
+
+Creating “.Decades” Calculated Column
+12
+<h4><font color="#636363"><span style="font-family: Lato;">1-&nbsp; &nbsp; &nbsp;Go to&nbsp;</span><b>Data View<br></b><span style="font-family: Lato;">2-&nbsp; &nbsp; &nbsp;Select the&nbsp;</span><b>“Calendar Table”<br></b><span style="font-family: Lato;">3-&nbsp; &nbsp; &nbsp;Click on&nbsp;</span><b>Table tools</b><span style="font-family: Lato;">&nbsp;and
+then Click on&nbsp;</span><b>New Column<br></b><span style="font-family: Lato;">4-&nbsp; &nbsp; &nbsp;Copy &amp; Paste the DAX Below</span><br></font></h4><h4><font color="#636363"><br><span style="font-family: Lato;">DAX Formula:</span><br><span style="font-family: Lato;">
+.Decades = VAR DecadeStart =</span><br><span style="font-family: Lato;">
+&nbsp; &nbsp; ROUNDDOWN ( 'Calendar'[Date].[Year], -1 )</span><br><span style="font-family: Lato;">
+VAR DecadeEnd = DecadeStart + 9</span><br><span style="font-family: Lato;">
+RETURN</span><br><span style="font-family: Lato;">
+&nbsp; &nbsp; DecadeStart &amp; " - " &amp; DecadeEnd&nbsp;</span><br><span style="font-family: Lato;">
+</span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><br></span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><b>Follow the steps in the GIF below.</b></span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><b><br></b></span></font><br></h4><h4><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1284/6/1.gif" style="width: 100%;"><br><o:p>&nbsp;</o:p></h4><h4><o:p><br></o:p></h4><h4><o:p><br></o:p></h4><p class="MsoNormal"><o:p></o:p></p>
+
+<p class="MsoNormal"><o:p></o:p></p>
+
+<p class="MsoNormal"><o:p></o:p></p>
+
+<p class="MsoNormal">
+<!--[if !supportLineBreakNewLine]-->
+<!--[endif]--><o:p></o:p></p>
+
+<p class="MsoNormal"><o:p></o:p></p>
+
+<p class="MsoNormal"><o:p></o:p></p>
+
+
+
+<h4><a href="https://www.youtube.com/watch?v=g5yZIk2rYGc" target="_blank"><span style="font-family: Lato;"><font color="#0000ff">Creating calculated columns in Power BI</font></span></a></h4>
+
