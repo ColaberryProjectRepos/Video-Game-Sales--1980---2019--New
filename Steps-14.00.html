@@ -1,0 +1,125 @@
+
+Creating all Measures
+14
+<p style="text-align: left;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1284/8/1.jpg"></p><h4><font color="#636363"><br>1.&nbsp; &nbsp; &nbsp; Click on&nbsp;<b>report view<br></b>2.&nbsp; &nbsp; &nbsp;&nbsp;<b>Right click</b>&nbsp;on
+“VideoGameSales” and select&nbsp;<b>New measure</b>.<br>3.&nbsp; &nbsp; &nbsp; In the DAX Formular&nbsp;<b>Copy
+&amp; Paste</b>&nbsp;each of the below formulas one by one.<br>4.&nbsp; &nbsp; &nbsp; Choose the necessary&nbsp;<b>format</b>&nbsp;and&nbsp;<b>decimal</b>&nbsp;for
+each measure then Save.<br><o:p>&nbsp;<br></o:p><b>Measures (Dax Formula):</b></font></h4><h4><font color="#636363"><br><b>.YoY%</b>&nbsp;=&nbsp;<br>VAR CurrentYearSales = SUM('VideoGameSales'[GlobalSales])<br>VAR PreviousYearSales = CALCULATE(<br>&nbsp; &nbsp; SUM('VideoGameSales'[GlobalSales]),&nbsp;<br>&nbsp; &nbsp; DATEADD('Calendar'[Date], -1, YEAR)<br>)<br>RETURN<br>&nbsp; &nbsp; IF(ISBLANK(PreviousYearSales), BLANK(),
+DIVIDE(CurrentYearSales - PreviousYearSales, PreviousYearSales))<br></font></h4><h4><br></h4><h4><font color="#636363"><i>For the&nbsp;<b>YoY% Measure</b>, make sure to Format it
+as “<b>Percentage</b>” instead of&nbsp;<b>“General”</b>&nbsp;as shown in the
+pic below.<br></i><o:p>&nbsp;</o:p></font></h4><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal">
+<!--[if !supportLineBreakNewLine]-->
+<!--[endif]--><font color="#636363"><o:p></o:p></font></p><p class="MsoNormal"><font color="#636363"><o:p></o:p></font></p><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p class="MsoNormal" style="text-align: left;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1284/8/2.jpg"><o:p><br></o:p></p><p class="MsoNormal" style="text-align: left;"><o:p></o:p></p><p class="MsoNormal"><b><br></b></p><h4><font color="#636363"><b><span style="font-family: Lato;">.Total Global Sales</span></b><span style="font-family: Lato;">&nbsp;=
+SUM(VideoGameSales[GlobalSales])</span></font></h4><h4><font color="#636363"><b>.Average Global Sales Per Year =&nbsp;</b><span style="font-family: Lato;">AVERAGE(VideoGameSales[GlobalSales])</span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><br></span><br><i>For&nbsp;<b>BOTH</b>&nbsp;of&nbsp;<b>.Total </b>AND<b> .Average Global Sales
+Measures</b>, make sure to Format it as “<b>Currency</b>” </i></font></h4><h4><font color="#636363"><i>as shown in the pic
+below</i></font></h4><p class="MsoNormal" style="text-align: left;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1284/8/3.jpg"><i><br></i></p><p class="MsoNormal" style="text-align: left;"><i><br></i></p><h4><font color="#636363"><span style="font-weight: bold; font-family: Lato;">.Last Decade DoD =</span><br>
+Var CYear = year(max(Calendar[Date]))<br>var EODecade = date(roundup(<br>&nbsp;if(right(CYear,1)="0",<br>CYear+1,<br>CYear)<br>,-1)-11,12,31)<br>var SODecade = date(ROUNDDOWN(CYear,-1)-10,1,1) return<br>CALCULATE (<br>SUM('VideoGameSales'[GlobalSales]),<br>all('Calendar'),<br>DATESBETWEEN (<br>'Calendar'[Date],<br>SODecade,<br>EODecade<br>)<br>)<b><br>
+</b></font></h4><h4><font color="#636363"><b><br></b></font></h4><h4><font color="#636363"><b>.DoD =&nbsp;</b><br>var CYear = year(max('Calendar'[Date]))<br>var EODecade = date(roundup(<br>if(right(CYear,1)="0",<br>CYear+1,<br>CYear)<br>,-1)-1,12,31)<br>var SODecade = date(ROUNDDOWN(CYear,-1),1,1) return&nbsp;<br>CALCULATE (<br>SUM('VideoGameSales'[GlobalSales]),<br>DATESBETWEEN (<br>'Calendar'[Date],<br>SODecade,<br>EODecade<br>)<br>)&nbsp;<b><br></b><b>
+</b></font></h4><h4><font color="#636363"><b><br></b></font></h4><h4><font color="#636363"><b>.DoD% =&nbsp;</b>DIVIDE([.DoD]-[.Last Decade DoD],[.Last Decade DoD], 0)</font></h4><h4><font color="#636363"><br><i style="">Just like what we did with the YoY% Measure, let’s make we format the DoD%
+as “Percentage” instead of&nbsp;“General”&nbsp;as shown in the pic below.</i></font></h4><p class="MsoNormal">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<o:p></o:p></p><p class="MsoNormal"><o:p>&nbsp;</o:p></p><p class="MsoNormal" style="text-align: left;"><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1284/8/4.jpg"><o:p><br></o:p></p><p class="MsoNormal" style="text-align: left;"><o:p><br></o:p></p><p class="MsoNormal" style="text-align: left;"><o:p></o:p></p><h4><font color="#636363"><span style="font-family: Lato;"><b>.ArrowForDOD% =&nbsp;</b>SWITCH(TRUE(), [.DoD%] &lt;0,
+UNICHAR(9662),[.DoD%] =0, UNICHAR(9666), UNICHAR(9652))</span><b><br></b></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><b>
+</b></span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><b>.ArrowForYOY% =&nbsp;</b>SWITCH(TRUE(), [.YoY%] &lt;0, UNICHAR(9662),[.YoY%] =0,
+UNICHAR(9666), UNICHAR(9652))<br></span><span style="font-family: Lato;"><b>
+</b></span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><b>.ColorForArrowDoD =&nbsp;</b>IF([.ArrowForDOD%] =
+UNICHAR(9652),"Green",IF([.ArrowForDOD%] =
+UNICHAR(9662),"Red","Yellow"))<br></span><span style="font-family: Lato;"><b>
+</b></span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><b>.ColorForArrowYoY =&nbsp;</b>IF([.ArrowForYOY%] = UNICHAR(9652),"Green",IF([.ArrowForYOY%]
+= UNICHAR(9662),"Red","Yellow"))</span></font></h4><h4><font color="#636363"><span style="font-family: Lato;"><br></span><b><span style="font-family: Lato;">
+Follow the steps in the GIF below.</span></b></font></h4><h4><font color="#636363"><b><span style="font-family: Lato;"><br></span></b></font></h4><h4><img src="https://app.colaberry.com/uploads/ProjectStepsImages/1284/8/5.gif" style="width: 100%;"><font color="#636363"><b><span style="font-family: Lato;"><br></span></b></font></h4><h4><font color="#636363"><b><span style="font-family: Lato;"><br></span></b></font></h4><p class="MsoNormal"><o:p></o:p></p>
+
+<h4><a href="https://www.youtube.com/watch?v=waG_JhBgUpM" target="_blank"><span style="font-family: Lato;"><font color="#0000ff">How to create Power BI DAX / Measure - Tutorial</font></span></a></h4>
+
